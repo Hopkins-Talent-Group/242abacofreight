@@ -5,17 +5,21 @@ import "./globals.css";
 const ibmSans = IBM_Plex_Sans({
   weight: ["400", "500", "600"],
   subsets: ["latin"],
+  variable: "--font-sans",
 });
 
 const ibmMono = IBM_Plex_Mono({
   weight: ["400", "500"],
   subsets: ["latin"],
+  variable: "--font-mono",
 });
 
 const bebas = Bebas_Neue({
   weight: ["400"],
   subsets: ["latin"],
+  variable: "--font-display",
 });
+
 
 export const metadata: Metadata = {
   title: "Abaco Freight | Industrial Freight-Yard Template",
