@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #0d0d0d;
+    --foreground: #e0e0e0;
+    --muted: #6b6b6b;
+    --accent: #b30000; /* safety-amber/red */
+    --charcoal: #111111;
+    --silver: #e5e5e5;
+  }
+
+  .dark {
+    --background: #0d0d0d;
+    --foreground: #e0e0e0;
+    --muted: #6b6b6b;
+    --accent: #b30000;
+    --charcoal: #111111;
+    --silver: #e5e5e5;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "IBM Plex Sans", sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Bebas Neue", "IBM Plex Sans", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* Custom hazard-stripe divider */
+.hazard-stripe {
+  @apply h-px bg-[var(--accent)] opacity-80;
+}
+
+/* Sticky header */
+.sticky-header {
+  @apply fixed top-0 left-0 right-0 z-50 bg-[var(--charcoal)]/90 backdrop-blur-sm border-b border-white/[.05];
+}
+
+/* IBM Plex Mono overrides */
+.mono {
+  font-family: "IBM Plex Mono", monospace;
+}
