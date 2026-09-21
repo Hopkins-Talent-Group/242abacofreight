@@ -28,3 +28,5 @@ npx serve design
 ## Status
 
 Design-only per brief ("pure design, no code"). Phone numbers, rates, flight schedule, hours, and stats are clearly-marked placeholders awaiting owner confirmation — see the checklist in `DESIGN-SPEC.md`. The West Palm Beach warehouse address is verified from the company's Florida Sunbiz filing.
+
+powered by VitrixLab PH
