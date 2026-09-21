@@ -106,3 +106,27 @@ Every section in `design/index.html` carries an HTML comment naming its future c
 
 **Convergence update (latest pass):** the parallel session adopted the DESIGN-SPEC §3 palette in `:root` (charcoal `#0b1218`, amber `#ffb300`, aqua `#2bc4d4`), added an `--color-aqua` theme token, and ported the mockup's component classes (`.cta-primary`, `.cta-aqua`, `.cta-ghost`, `.quote-input`, `.section-title`, `.section-eyebrow`, `.tag`, `.hazard-stripe`) into `globals.css` — but via **invented `@apply` classes** (`bg-amber`, `text-101418`, `font-800`, `letter-spacing-009em`, `font-plex-mono`, `border-line`…) that broke the build again ("Cannot apply unknown utility class `bg-amber`"). All 12 component classes were rewritten as plain CSS (unbreakable, hover/focus states preserved, class names unchanged) and the build was re-verified green (exit 0, twice). **Rule for future CSS edits in this repo:** Tailwind v4 `@apply` only accepts utilities that exist in the `@theme` or defaults — anything else must be plain CSS or an arbitrary value (`text-[13.5px]`, `z-[60]`). The component classes are staged but not yet consumed by the section components (they still use arbitrary-value classes).
 
+**Second convergence event (dev-server 500 fix):** the component classes were rewritten a third time by the parallel session with different invented utilities (`font-800`, `text-uppercase`, `letter-spacing-009em`, `text-13px`, `color-[var(--aqua)]`, `border-1`, `@apply mono`, broken brackets like `hover:bg-[var(--accent)/10 transition-colors]`) → dev server 500 + `Cannot apply unknown utility class 'font-plex-mono'`. Instead of patching again, the **preferred class names were registered as real `@theme` tokens** so they compile natively: `--color-amber` (= accent), `--color-amber2`, `--color-aqua2`, `--color-line` (+ `--line` in `:root`), `--color-ink`, `--color-deep`, `--font-plex-sans`, `--font-plex-mono`. Only genuinely impossible names were corrected to valid syntax: `font-800`→`font-extrabold`, `font-600`→`font-semibold`, `text-uppercase`/`text-transform-uppercase`→`uppercase`, `letter-spacing-*em`→`tracking-[…]em`, `text-Npx`→`text-[Npx]`/`text-xs`, `border-1`→`border`, `z-60`→`z-[60]`, `color-[…]`→`text-aqua`, `@apply mono`→`font-mono`. Build re-verified green (exit 0). **Alias tokens are the contract going forward: `bg-amber`/`text-amber`/`hover:bg-amber2`/`border-line`/`text-ink`/`text-deep`/`font-plex-*` are all valid — prefer them over `bg-[var(--…)]` spellings.**
+
+## 8. A/B test plan — Variant A vs Variant B
+
+**Variant A — `conv-freight/`** (dark industrial "freight-yard"): charcoal background, generic freight copy (FTL/LTL), quote form only at page bottom, no WhatsApp channel.
+
+**Variant B — `conv-freight-v2/`** (light "island professional"): paper background + white cards, researched **FL→Abaco air-cargo positioning** ("Fly it to Abaco. Skip the boat wait."), and four structural revenue-catcher additions:
+1. **Above-the-fold mini quote card** (Hero right column) — capture starts before any scrolling
+2. **Flight board** (schedule tiles = speed proof) + **published per-lb rates** (kills quote-wait anxiety)
+3. **WhatsApp dispatch CTA** beside the primary CTA (dominant channel in the Bahamian market)
+4. **Sticky mobile action bar** — Call / WhatsApp / Quote always one tap away
+
+**Hypotheses:**
+- H1: the above-fold quote card raises quote-start rate vs a bottom-only form
+- H2: flight board + published rates raise form completion (less uncertainty)
+- H3: the WhatsApp CTA raises total contact rate
+- H4 (segment): light theme wins casual island shippers; dark theme wins commercial/charter clients
+
+**Metrics to wire at implementation:** GA4 events `quote_start`, `quote_submit`, `tel_click`, `wa_click`; primary KPI = `quote_submit` / visitor.
+
+**Running it:** deploy A and B separately (e.g., A at root, B under `/b` or a `b.` subdomain), split traffic 50/50 by cookie or edge rule; run to a pre-agreed sample size before reading results. B currently changes several factors at once (theme + structure + copy), so treat A-vs-B first as a **style bake-off**, then isolate the winning elements in follow-up single-variable tests.
+
+**Status:** Variant B is design-complete — `pnpm build` ✓ and `pnpm lint` ✓ verified in `conv-freight-v2/`. All real-world data (rates, flight schedule, phone/WhatsApp numbers, hours) remains placeholder pending owner confirmation (§5 checklist).
+

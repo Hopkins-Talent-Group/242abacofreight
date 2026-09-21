@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/* VARIANT B — light "island professional" (A/B test; see DESIGN-SPEC.md §8).
+   Same brand type; paper background, white cards, aqua-forward accents.
+   Amber stays the primary CTA color; teal #0d7f8f is the on-light accent. */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-amber: var(--accent);
+  --color-amber2: #ff9d00;
+  --color-charcoal: var(--charcoal);
+  --color-aqua: var(--aqua);
+  --color-aqua2: #49d4e3;
+  --color-teal: var(--aqua-deep);
+  --color-deep: var(--deep);
+  --color-ink: var(--ink);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-silver: var(--silver);
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+  --font-bebas: var(--font-bebas-neue);
+  --font-display: var(--font-bebas-neue);
+  --font-plex-sans: var(--font-plex-sans);
+  --font-plex-mono: var(--font-plex-mono);
+}
+
+@layer base {
+  :root {
+    --background: #f7f6f1;
+    --foreground: #111a21;
+    --muted: #5d6b76;
+    --accent: #ffb300; /* safety amber — primary CTA */
+    --charcoal: #10161d; /* dark band (quote band + footer) */
+    --aqua: #2bc4d4;
+    --aqua-deep: #0d7f8f; /* teal — on-light accent/links */
+    --card: #ffffff;
+    --line: #e5e1d8;
+    --silver: #223040; /* hairline for on-dark use */
+    --deep: #062226; /* text on aqua */
+    --ink: #101418; /* text on amber */
+  }
+
+  .dark {
+    --background: #f7f6f1;
+    --foreground: #111a21;
+    --muted: #5d6b76;
+    --accent: #ffb300;
+    --charcoal: #10161d;
+    --aqua: #2bc4d4;
+    --aqua-deep: #0d7f8f;
+    --card: #ffffff;
+    --line: #e5e1d8;
+    --silver: #223040;
+    --deep: #062226;
+    --ink: #101418;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-plex-sans), "Barlow", system-ui, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-bebas-neue), var(--font-plex-sans), sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+  }
+}
+
+@layer components {
+  /* Hazard-stripe divider */
+  .hazard-stripe {
+    @apply h-[6px] bg-amber;
+  }
+
+  /* Sticky header (light) */
+  .sticky-header {
+    @apply fixed top-0 left-0 right-0 z-[60] bg-card/95 backdrop-blur-sm border-b border-line;
+  }
+
+  /* IBM Plex Mono */
+  .mono {
+    @apply font-plex-mono;
+  }
+
+  /* Primary CTA — amber */
+  .cta-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded bg-amber px-6 py-3 text-ink font-extrabold uppercase tracking-[0.09em] text-[13.5px] transition-colors hover:bg-amber2;
+  }
+
+  /* Aqua CTA */
+  .cta-aqua {
+    @apply inline-flex items-center justify-center gap-2 rounded bg-aqua px-6 py-3 text-deep font-extrabold uppercase tracking-[0.09em] text-[13.5px] transition-colors hover:bg-aqua2;
+  }
+
+  /* Ghost CTA — teal outline */
+  .cta-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded bg-transparent border-2 border-teal px-6 py-3 text-teal font-extrabold uppercase tracking-[0.09em] text-[13.5px] transition-colors hover:bg-aqua/10;
+  }
+
+  /* Quote form inputs (light) */
+  .quote-input {
+    @apply w-full rounded border border-line bg-card px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-aqua appearance-none;
+  }
+
+  /* White card */
+  .card {
+    @apply rounded-lg border border-line bg-card;
+  }
+
+  /* Section helpers */
+  .section-head {
+    @apply mb-10;
+  }
+
+  .section-title {
+    @apply font-bebas text-4xl md:text-5xl tracking-[0.02em] leading-[0.95] mb-4;
+  }
+
+  .section-eyebrow {
+    @apply text-teal font-mono text-xs font-semibold tracking-[0.22em] uppercase;
+  }
+
+  .micro {
+    @apply text-muted text-[13px];
+  }
+
+  .tag {
+    @apply inline-block font-mono text-[10px] font-semibold tracking-[0.16em] uppercase text-teal border border-line px-3 py-1 rounded bg-card;
+  }
+}
+

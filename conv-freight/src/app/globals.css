@@ -13,10 +13,21 @@
   --color-charcoal: var(--charcoal);
   --color-aqua: var(--aqua);
   --color-silver: var(--silver);
+  /* Registered aliases — makes these @apply-able in component classes:
+     bg-amber / text-amber / border-amber (+ /opacity modifiers),
+     border-line, text-ink, text-deep, hover:bg-amber2, hover:bg-aqua2 */
+  --color-amber: var(--accent);
+  --color-amber2: #ff9d00;
+  --color-aqua2: #49d4e3;
+  --color-line: var(--line);
+  --color-ink: #101418;
+  --color-deep: #062226;
   --font-sans: var(--font-plex-sans);
   --font-mono: var(--font-plex-mono);
   --font-bebas: var(--font-bebas-neue);
   --font-display: var(--font-bebas-neue);
+  --font-plex-sans: var(--font-plex-sans);
+  --font-plex-mono: var(--font-plex-mono);
 }
 
 @layer base {
@@ -27,6 +38,7 @@
     --accent: #ffb300; /* safety amber */
     --charcoal: #111a21;
     --aqua: #2bc4d4;
+    --line: #223040;
     --silver: #e5e5e5;
   }
 
@@ -37,6 +49,7 @@
     --accent: #ffb300;
     --charcoal: #111a21;
     --aqua: #2bc4d4;
+    --line: #223040;
     --silver: #e5e5e5;
   }
 
@@ -62,12 +75,12 @@
 @layer components {
   /* Hazard-stripe divider */
   .hazard-stripe {
-    @apply h-px bg-[var(--accent)] opacity-80;
+    @apply h-px bg-amber opacity-80;
   }
 
   /* Sticky header */
   .sticky-header {
-    @apply fixed top-0 left-0 right-0 z-60 bg-charcoal/94 backdrop-blur-sm border-b border-silver/10;
+    @apply fixed top-0 left-0 right-0 z-[60] bg-charcoal/94 backdrop-blur-sm border-b border-silver/10;
   }
 
   /* IBM Plex Mono overrides */
@@ -77,22 +90,22 @@
 
   /* Primary CTA button */
   .cta-primary {
-    @apply rounded bg-[var(--accent)] px-6 py-3 text-[var(--foreground)] font-800 text-uppercase letter-spacing-009em font-size-13.5px transition-colors hover:bg-[var(--accent)/90];
+    @apply rounded bg-amber px-6 py-3 text-ink font-extrabold uppercase tracking-[0.09em] text-[13.5px] transition-colors hover:bg-amber/90;
   }
 
   /* Aqua CTA button */
   .cta-aqua {
-    @apply rounded bg-[var(--aqua)] px-6 py-3 text-[var(--charcoal)] font-800 text-uppercase letter-spacing-009em font-size-13.5px transition-colors hover:bg-[var(--aqua)/90];
+    @apply rounded bg-aqua px-6 py-3 text-deep font-extrabold uppercase tracking-[0.09em] text-[13.5px] transition-colors hover:bg-aqua/90;
   }
 
   /* Ghost button */
   .cta-ghost {
-    @apply rounded bg-transparent border-2 border-[var(--line)] px-6 py-3 text-[var(--accent)] hover:bg-[var(--accent)/10 transition-colors];
+    @apply rounded bg-transparent border-2 border-line px-6 py-3 text-amber hover:bg-amber/10 transition-colors;
   }
 
   /* Quote form inputs */
   .quote-input {
-    @apply w-full rounded bg-[var(--charcoal)] px-4 py-3 text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--aqua)] appearance-none;
+    @apply w-full rounded bg-charcoal px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-aqua appearance-none;
   }
 
   /* Section heading */
@@ -107,16 +120,16 @@
 
   /* Section eyebrow */
   .section-eyebrow {
-    @apply text-[var(--accent)] mb-8 block text-12px font-600 letter-spacing-022em text-transform-uppercase;
+    @apply text-amber mb-8 block text-xs font-semibold tracking-[0.22em] uppercase;
   }
 
   /* Micro text */
   .micro {
-    @apply text-[var(--muted)] text-13px mt-4;
+    @apply text-muted text-[13px] mt-4;
   }
 
   /* Tag */
   .tag {
-    @apply inline-block text-10px font-600 letter-spacing-016em text-transform-uppercase color-[var(--aqua)] border-1 border-[var(--line)] px-3 py-1 rounded bg-[var(--charcoal)] mono;
+    @apply inline-block text-[10px] font-semibold tracking-[0.16em] uppercase text-aqua border border-line px-3 py-1 rounded bg-charcoal font-mono;
   }
 }
