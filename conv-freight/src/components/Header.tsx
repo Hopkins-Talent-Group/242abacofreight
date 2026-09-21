@@ -13,15 +13,15 @@ export function Header() {
         <div className="flex items-center gap-4">
           <a
             className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-            href="tel:+1-555-0199"
+            href="tel:+15615022632"
           >
-            +1 555 0199
+            +1 561 502 2632
           </a>
           <a
             className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-            href="mailto:dispatch@abacofreight.com"
+            href="mailto:kimber@abacofreightllc.com"
           >
-            dispatch@abacofreight.com
+            kimber@abacofreightllc.com
           </a>
         </div>
       </div>

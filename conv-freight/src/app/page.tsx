@@ -1,37 +1,88 @@
 import Image from "next/image";
+import { Hero } from "../components/Hero";
+import { Services } from "../components/Services";
+import { WhyUs } from "../components/WhyUs";
+import { StatBar } from "../components/StatBar";
 
 export default function Home() {
   return (
-    <section className="relative min-h-screen bg-[var(--charcoal)] overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[var(--charcoal)] via-[var(--charcoal)] to-[var(--background)]">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[var(--accent)] rotate-6 blur-[100px] opacity-10"></div>
-      </div>
+    <>
+      <Hero />
 
-      <div className="relative flex flex-col items-center justify-center py-20 px-6 sm:py-32">
-        <div className="max-w-4xl text-center w-full">
-          <h1 className="font-bebas text-5xl md:text-6xl lg:text-7xl text-[var(--accent)] mb-6 tracking-widest">
-            Reliable Freight<br />
-            & Logistics Solutions
-          </h1>
-          <p className="text-lg md:text-xl text-[var(--muted)] mb-8 max-w-2xl mx-auto">
-            Family-owned and operated for 14+ years. We provide dedicated freight transportation from Florida to the Bahamas, including air freight, LTL shipping, and full truckload services.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center sm:gap-6">
-            <a
-              href="#quote"
-              className="rounded bg-[var(--accent)] px-8 py-4 text-base font-medium text-white hover:opacity-95 transition-opacity"
-            >
-              Get a Quote
-            </a>
-            <a
-              href="#services"
-              className="rounded border-2 border-white/[.2] px-8 py-4 text-base font-medium text-[var(--foreground)] hover:bg-[var(--accent)]/10 transition-colors"
-            >
-              Our Services
-            </a>
+      <main className="py-24">
+        <Services />
+        <WhyUs />
+        <StatBar />
+      </main>
+
+      <section className="py-24 bg-[var(--charcoal)]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center">
+            <h2 className="font-bebas text-4xl md:text-5xl mb-6">Get a Free Quote</h2>
+            <p className="text-[var(--muted)] mb-12 max-w-2xl mx-auto">
+              Fill out the form below or call us to receive a customized quote for your freight needs.
+            </p>
+            <div className="bg-white dark:bg-[var(--charcoal)] rounded-2xl p-8 max-w-md mx-auto">
+              <form className="space-y-6">
+                <div>
+                  <label className="block text-sm font-medium text-[var(--foreground)] mb-2">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full rounded bg-[var(--charcoal)] px-4 py-3 text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-[var(--foreground)] mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    className="w-full rounded bg-[var(--charcoal)] px-4 py-3 text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-[var(--foreground)] mb-2">
+                    Phone
+                  </label>
+                  <input
+                    type="tel"
+                    className="w-full rounded bg-[var(--charcoal)] px-4 py-3 text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+                    placeholder="+1 561 502 2632"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-[var(--foreground)] mb-2">
+                    Service Type
+                  </label>
+                  <select
+                    className="w-full rounded bg-[var(--charcoal)] px-4 py-3 text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] appearance-none"
+                  >
+                    <option value="">Select service type</option>
+                    <option value="air-freight">Air Freight</option>
+                    <option value="full-truckload">Full Truckload (FTL)</option>
+                    <option value="ltl">LTL Shipping</option>
+                  </select>
+                </div>
+                <button
+                  type="submit"
+                  className="w-full rounded bg-[var(--accent)] px-6 py-3 text-base font-medium text-white hover:opacity-95 transition-opacity"
+                >
+                  Get Quote
+                </button>
+              </form>
+            </div>
+            <p className="mt-6 text-sm text-[var(--muted)]">
+              Or call +1 561 502 2632 for immediate assistance
+            </p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
