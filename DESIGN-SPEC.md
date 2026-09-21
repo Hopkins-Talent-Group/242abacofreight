@@ -78,3 +78,31 @@ Every section in `design/index.html` carries an HTML comment naming its future c
 - Mockup loads fonts from Google Fonts; the Next.js build should self-host via `next/font` (no layout shift)
 - Mobile action bar must not overlap footer content — footer has bottom padding reserved
 
+## 7. Implementation status — `conv-freight/` (verified this pass)
+
+**Toolchain:** pnpm 11.24 · Next.js 16.3.5 (Turbopack) · Tailwind 4.3.3 · React 19.2.8 · TypeScript 5. Gate status: `pnpm build` ✓ · `pnpm lint` ✓ (both verified end-to-end).
+
+**Implemented & rendered on `/`:** `Header` (fixed bar: phone + email), `Hero`, `Services` (Air Freight / FTL / LTL), `WhyUs`, `StatBar`, and an inline "Get a Free Quote" form section.
+
+**Built but NOT mounted:** `Coverage`, `Process`, `Testimonials` (files exist in `src/components/` but `page.tsx` doesn't render them).
+
+**Theme system (fixed this pass):** Tailwind v4 tokens for colors (`--color-background/foreground/muted/accent/charcoal/silver`) and fonts (`--font-sans` / `--font-mono` / `--font-bebas` / `--font-display`), so the `font-bebas` display utility used across all headings actually renders Bebas Neue via `next/font` (`--font-plex-sans` / `--font-plex-mono` / `--font-bebas-neue` set in `layout.tsx`).
+
+**Contact data surfaced by the implementation (candidates — verify before print):**
+- Phone `+1 561 502 2632` (561 = West Palm Beach area code — consistent with the Sunbiz filing)
+- Email `kimber@abacofreightllc.com` (domain matches the LLC name)
+
+**Divergence to arbitrate:** the implemented copy is a generic US interstate template (FTL/LTL, "nationwide coverage", placeholder `MC-1234567`), while the verified research (§0) points to **FL→Abaco air cargo & island supply** as the actual differentiator. Pick one archetype before launch copy is finalized.
+
+**Revenue-catcher gaps vs. the approved design (`design/index.html`):** no above-the-fold quote card, no WhatsApp CTA (critical for the Bahamian market), no flight board, no published rates, no mobile action bar (Call/WhatsApp/Quote), no FAQ, no route detail, no POD/manifest trust visual. All of these exist as ready sections in the mockup — the §4 component map is the porting guide.
+
+**Toolchain fixes applied during bring-up (re-check these first if the build regresses):**
+1. `pnpm-workspace.yaml` — `allowBuilds.unrs-resolver: true` (pnpm generates this entry as a literal placeholder string, which blocks install under strict deps verification and fails every `pnpm build` before `next build` even runs)
+2. `src/app/globals.css` — Tailwind **v4** syntax (`@import "tailwindcss"` + `@theme inline`); v3 directives (`@tailwind base/components/utilities`) hard-fail the v4 build with "Cannot apply unknown utility class"
+3. `layout.tsx` — `next/font` variables declared (`variable:` option) so the Google fonts actually apply
+4. `page.tsx` — `Header` mounted, dead `#quote`/`#services` anchors given real targets with `scroll-mt-20`, unused starter `Image` import removed
+5. `Testimonials.tsx` — raw `"` in JSX replaced with `&ldquo;`/`&rdquo;` (react/no-unescaped-entities)
+6. Housekeeping: dual lockfiles present (`pnpm-lock.yaml` is the one in use; `package-lock.json` is an npm leftover, safe to delete once committed to pnpm)
+
+**Convergence update (latest pass):** the parallel session adopted the DESIGN-SPEC §3 palette in `:root` (charcoal `#0b1218`, amber `#ffb300`, aqua `#2bc4d4`), added an `--color-aqua` theme token, and ported the mockup's component classes (`.cta-primary`, `.cta-aqua`, `.cta-ghost`, `.quote-input`, `.section-title`, `.section-eyebrow`, `.tag`, `.hazard-stripe`) into `globals.css` — but via **invented `@apply` classes** (`bg-amber`, `text-101418`, `font-800`, `letter-spacing-009em`, `font-plex-mono`, `border-line`…) that broke the build again ("Cannot apply unknown utility class `bg-amber`"). All 12 component classes were rewritten as plain CSS (unbreakable, hover/focus states preserved, class names unchanged) and the build was re-verified green (exit 0, twice). **Rule for future CSS edits in this repo:** Tailwind v4 `@apply` only accepts utilities that exist in the `@theme` or defaults — anything else must be plain CSS or an arbitrary value (`text-[13.5px]`, `z-[60]`). The component classes are staged but not yet consumed by the section components (they still use arbitrary-value classes).
+

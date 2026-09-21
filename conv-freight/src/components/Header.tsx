@@ -8,7 +8,7 @@ export function Header() {
           className="font-bebas text-2xl tracking-wider"
           href="/"
         >
-          ABA FREIGHT
+          ABACO FREIGHT
         </Link>
         <div className="flex items-center gap-4">
           <a

@@ -1,6 +1,6 @@
 export function Services() {
   return (
-    <section className="py-24 bg-white dark:bg-[var(--charcoal)]">
+    <section id="services" className="py-24 bg-white dark:bg-[var(--charcoal)] scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="font-bebas text-4xl md:text-5xl text-center mb-12">Our Services</h2>
 

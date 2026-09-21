@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Header } from "../components/Header";
 import { Hero } from "../components/Hero";
 import { Services } from "../components/Services";
 import { WhyUs } from "../components/WhyUs";
@@ -7,6 +7,7 @@ import { StatBar } from "../components/StatBar";
 export default function Home() {
   return (
     <>
+      <Header />
       <Hero />
 
       <main className="py-24">
@@ -15,7 +16,7 @@ export default function Home() {
         <StatBar />
       </main>
 
-      <section className="py-24 bg-[var(--charcoal)]">
+      <section id="quote" className="py-24 bg-[var(--charcoal)] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
             <h2 className="font-bebas text-4xl md:text-5xl mb-6">Get a Free Quote</h2>

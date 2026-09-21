@@ -1,32 +1,42 @@
 @import "tailwindcss";
 
-/* Tailwind v4 theme mapping — exposes the CSS vars as utility colors
-   (bg-background, text-foreground, bg-charcoal, bg-accent, ...) */
+/* Tailwind v4 theme mapping — matches DESIGN-SPEC.md brand system:
+   Palette: charcoal #0B1218 (base) · panel #111A21 · hairline #223040 ·
+   safety amber #FFB300 (primary CTA/accent) · Abaco aqua #2BC4D4 (secondary) ·
+   paper #F5F3EE (single light rhythm section for rates)
+   Type: Bebas Neue (display) · Barlow 400–800 (body/UI) · IBM Plex Mono (labels, stats) */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-charcoal: var(--charcoal);
+  --color-aqua: var(--aqua);
   --color-silver: var(--silver);
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+  --font-bebas: var(--font-bebas-neue);
+  --font-display: var(--font-bebas-neue);
 }
 
 @layer base {
   :root {
-    --background: #0d0d0d;
-    --foreground: #e0e0e0;
-    --muted: #6b6b6b;
-    --accent: #b30000; /* safety-amber/red */
-    --charcoal: #111111;
+    --background: #0b1218;
+    --foreground: #e8eef2;
+    --muted: #9fb0bd;
+    --accent: #ffb300; /* safety amber */
+    --charcoal: #111a21;
+    --aqua: #2bc4d4;
     --silver: #e5e5e5;
   }
 
   .dark {
-    --background: #0d0d0d;
-    --foreground: #e0e0e0;
-    --muted: #6b6b6b;
-    --accent: #b30000;
-    --charcoal: #111111;
+    --background: #0b1218;
+    --foreground: #e8eef2;
+    --muted: #9fb0bd;
+    --accent: #ffb300;
+    --charcoal: #111a21;
+    --aqua: #2bc4d4;
     --silver: #e5e5e5;
   }
 
@@ -35,7 +45,7 @@
   }
 
   body {
-    font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif;
+    font-family: var(--font-plex-sans), "Barlow", system-ui, sans-serif;
     background: var(--background);
     color: var(--foreground);
     -webkit-font-smoothing: antialiased;
@@ -43,25 +53,70 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display), var(--font-sans), sans-serif;
+    font-family: var(--font-bebas-neue), var(--font-plex-sans), sans-serif;
     font-weight: 400;
     letter-spacing: 0.05em;
   }
 }
 
 @layer components {
-  /* Custom hazard-stripe divider */
+  /* Hazard-stripe divider */
   .hazard-stripe {
-    @apply h-px bg-accent opacity-80;
+    @apply h-px bg-[var(--accent)] opacity-80;
   }
 
   /* Sticky header */
   .sticky-header {
-    @apply fixed top-0 left-0 right-0 z-50 bg-charcoal/90 backdrop-blur-sm border-b border-white/5;
+    @apply fixed top-0 left-0 right-0 z-60 bg-charcoal/94 backdrop-blur-sm border-b border-silver/10;
   }
 
   /* IBM Plex Mono overrides */
   .mono {
-    font-family: var(--font-mono), "IBM Plex Mono", monospace;
+    @apply font-plex-mono;
+  }
+
+  /* Primary CTA button */
+  .cta-primary {
+    @apply rounded bg-[var(--accent)] px-6 py-3 text-[var(--foreground)] font-800 text-uppercase letter-spacing-009em font-size-13.5px transition-colors hover:bg-[var(--accent)/90];
+  }
+
+  /* Aqua CTA button */
+  .cta-aqua {
+    @apply rounded bg-[var(--aqua)] px-6 py-3 text-[var(--charcoal)] font-800 text-uppercase letter-spacing-009em font-size-13.5px transition-colors hover:bg-[var(--aqua)/90];
+  }
+
+  /* Ghost button */
+  .cta-ghost {
+    @apply rounded bg-transparent border-2 border-[var(--line)] px-6 py-3 text-[var(--accent)] hover:bg-[var(--accent)/10 transition-colors];
+  }
+
+  /* Quote form inputs */
+  .quote-input {
+    @apply w-full rounded bg-[var(--charcoal)] px-4 py-3 text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--aqua)] appearance-none;
+  }
+
+  /* Section heading */
+  .section-head {
+    @apply mb-12;
+  }
+
+  /* Section title */
+  .section-title {
+    @apply text-4xl md:text-5xl mb-6 font-bebas;
+  }
+
+  /* Section eyebrow */
+  .section-eyebrow {
+    @apply text-[var(--accent)] mb-8 block text-12px font-600 letter-spacing-022em text-transform-uppercase;
+  }
+
+  /* Micro text */
+  .micro {
+    @apply text-[var(--muted)] text-13px mt-4;
+  }
+
+  /* Tag */
+  .tag {
+    @apply inline-block text-10px font-600 letter-spacing-016em text-transform-uppercase color-[var(--aqua)] border-1 border-[var(--line)] px-3 py-1 rounded bg-[var(--charcoal)] mono;
   }
 }

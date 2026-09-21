@@ -7,8 +7,8 @@ export function Testimonials() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <article className="p-6 rounded-xl border border-white/[.1]">
             <p className="text-[var(--muted)] text-lg leading-relaxed mb-6">
-              "Abaco Freight moved our equipment cross-country with professionalism and care.
-              The communication was top-notch throughout the entire process."
+              &ldquo;Abaco Freight moved our equipment cross-country with professionalism and care.
+              The communication was top-notch throughout the entire process.&rdquo;
             </p>
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-full bg-[var(--accent)] flex items-center justify-center text-sm font-medium text-white">
@@ -23,8 +23,8 @@ export function Testimonials() {
 
           <article className="p-6 rounded-xl border border-white/[.1]">
             <p className="text-[var(--muted)] text-lg leading-relaxed mb-6">
-              "Reliable, punctual, and transparent. They gave us a fair quote and delivered
-              on time, every time. Highly recommended for any freight needs."
+              &ldquo;Reliable, punctual, and transparent. They gave us a fair quote and delivered
+              on time, every time. Highly recommended for any freight needs.&rdquo;
             </p>
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-full bg-[var(--accent)] flex items-center justify-center text-sm font-medium text-white">

@@ -5,19 +5,19 @@ import "./globals.css";
 const ibmSans = IBM_Plex_Sans({
   weight: ["400", "500", "600"],
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-plex-sans",
 });
 
 const ibmMono = IBM_Plex_Mono({
   weight: ["400", "500"],
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-plex-mono",
 });
 
 const bebas = Bebas_Neue({
   weight: ["400"],
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-bebas-neue",
 });
 
 

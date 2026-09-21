@@ -12,9 +12,9 @@ Design-only mockup for **Abaco Freight LLC & Island Supply** — time-sensitive 
 |---|---|
 | `design/index.html` | Full static visual mockup — open in any browser, no build |
 | `DESIGN-SPEC.md` | Fit-check vs. prior AI draft, brand system, section→Next.js component map, conversion strategy, content checklist |
-| `conv-freight/` | Next.js 16.3.5 + Tailwind 4 app scaffold (parallel workstream — implementation target; currently untouched `create-next-app` starter, no design applied yet) |
+| `conv-freight/` | Next.js 16.3.5 + Tailwind 4 app — **partial implementation** (8 components; `pnpm build` + `pnpm lint` both green). Still missing several revenue-catcher sections — see `DESIGN-SPEC.md §7` |
 
-> **Note:** the design deliverable lives in `design/` + `DESIGN-SPEC.md`. When `conv-freight/` gets built out, the component map in `DESIGN-SPEC.md §4` is the handoff — every section in `design/index.html` is commented with its future component name.
+> **Note:** the approved design reference lives in `design/` + `DESIGN-SPEC.md`. `conv-freight/` is the working Next.js implementation (parallel workstream). The component map in `DESIGN-SPEC.md §4` is the porting guide; `§7` tracks implementation status, gaps, and the toolchain fixes applied during bring-up.
 
 
 ## View the mockup
