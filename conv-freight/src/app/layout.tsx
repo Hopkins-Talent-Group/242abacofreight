@@ -22,8 +22,8 @@ const bebas = Bebas_Neue({
 
 
 export const metadata: Metadata = {
-  title: "Abaco Freight | Industrial Freight-Yard Template",
-  description: "Freight-yard website with charcoal + safety-amber styling",
+  title: "Abaco Freight | Reliable Freight & Logistics Solutions",
+  description: "Abaco Freight provides reliable freight shipping and logistics solutions from Florida to the Bahamas. Get a quote today.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
