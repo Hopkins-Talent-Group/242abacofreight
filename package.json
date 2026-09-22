@@ -1,0 +1,7 @@
+{
+  "name": "242abacofreight",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "serve" 
+  }
+}
