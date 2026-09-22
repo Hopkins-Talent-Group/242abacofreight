@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Abaco Freight &amp; Island Supply — Florida → Abaco Air Cargo · Design Mockup</title>
+<meta name="description" content="Static design mockup (pure design, no build). Next.js App Router target. Revenue-catcher landing page for Abaco Freight LLC & Island Supply, West Palm Beach FL ⇄ Abaco, Bahamas.">
+<!--
+  ABACO FREIGHT & ISLAND SUPPLY — STATIC DESIGN MOCKUP
+  Pure design: no build step, no framework code. Open this file in a browser.
+  Each section is commented with its future Next.js component name (see ../DESIGN-SPEC.md).
+  All [placeholders] are marked — real contact data, rates and schedule must be confirmed.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b1218;--panel:#111a21;--card:#0d151c;--line:#223040;--amber:#ffb300;--amber2:#ff9d00;--aqua:#2bc4d4;--paper:#f5f3ee;--mut:#9fb0bd;--txt:#e8eef2}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:16px/1.6 "Barlow",system-ui,sans-serif;background:var(--ink);color:var(--txt);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.mono{font-family:"IBM Plex Mono",monospace}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber)}
+.eyebrow.aq{color:var(--aqua)}
+h1,h2,h3,h4{font-family:"Bebas Neue",sans-serif;font-weight:400}
+.h1{font-size:clamp(52px,7vw,88px);line-height:.92;letter-spacing:.01em}
+.h2{font-size:clamp(34px,4.5vw,54px);line-height:.95;letter-spacing:.02em}
+.sub{color:var(--mut);font-size:18px;max-width:56ch}
+.sec{padding:88px 0}
+.hz{height:10px;background:repeating-linear-gradient(45deg,var(--amber) 0 16px,var(--ink) 16px 32px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 24px;background:var(--amber);color:#101418;font-weight:800;text-transform:uppercase;letter-spacing:.09em;font-size:13.5px;border:0;cursor:pointer;font-family:"Barlow",sans-serif;transition:.15s}
+.btn:hover{background:var(--amber2)}
+.btn-aq{background:var(--aqua);color:#062226}
+.btn-aq:hover{background:#49d4e3}
+.btn-ghost{background:transparent;color:var(--amber);box-shadow:inset 0 0 0 2px var(--amber)}
+.btn-ghost:hover{background:rgba(255,179,0,.08);color:var(--amber)}
+.tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding:6px 10px;border:1px solid var(--line);color:var(--aqua);background:var(--card)}
+/* Header */
+.hdr{position:sticky;top:0;z-index:60;background:rgba(11,18,24,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:26px;height:74px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-badge{width:42px;height:42px;background:var(--amber);color:#101418;display:grid;place-items:center;font-family:"Bebas Neue";font-size:28px}
+.logo-t b{font-family:"Bebas Neue";font-weight:400;font-size:23px;letter-spacing:.05em;display:block;line-height:1.05}
+.logo-t span{font-family:"IBM Plex Mono";font-size:10px;letter-spacing:.2em;color:var(--aqua)}
+.hnav{display:flex;gap:4px;margin-left:8px}
+.hnav a{padding:9px 12px;color:var(--mut);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.07em}
+.hnav a:hover{color:#fff}
+.hdr-r{margin-left:auto;display:flex;align-items:center;gap:18px}
+.hdr-call{display:flex;flex-direction:column;line-height:1.15;text-align:right}
+.hdr-call span{font-family:"IBM Plex Mono";font-size:10px;letter-spacing:.18em;color:var(--mut);text-transform:uppercase}
+.hdr-call b{color:var(--amber);font-family:"IBM Plex Mono";font-size:15px}
+.burger{display:none;background:0;border:1px solid var(--line);color:var(--txt);font-size:20px;padding:8px 12px;cursor:pointer}
+/* Hero */
+.hero{position:relative;overflow:hidden;background:radial-gradient(1100px 520px at 78% -10%,rgba(43,196,212,.14),transparent 60%),linear-gradient(180deg,#0b1218,#0e1720)}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 2px,transparent 2px 30px);pointer-events:none}
+.hero-bg{position:absolute;right:-30px;bottom:-60px;font-family:"Bebas Neue";font-size:340px;line-height:1;color:rgba(255,255,255,.03);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.06fr .94fr;gap:56px;padding-top:74px;padding-bottom:92px;align-items:start}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 26px}
+.hero .sub{margin-bottom:30px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.micro{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;color:var(--mut);font-size:13.5px}
+.micro b{color:var(--aqua);font-weight:700}
+/* Quote card + forms */
+.qcard{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--amber);padding:28px 26px 24px;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.qcard h3{font-size:26px;letter-spacing:.03em;margin-bottom:4px}
+.qnote{font-family:"IBM Plex Mono";font-size:11px;color:var(--aqua);letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px;display:block}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.f-full{margin-bottom:12px}
+label{display:block;font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}
+.inp,select.inp,textarea{width:100%;background:var(--card);border:1px solid var(--line);color:var(--txt);padding:11px 12px;font:inherit;font-size:14.5px;outline:0;border-radius:0;appearance:none}
+.inp:focus,select.inp:focus,textarea:focus{border-color:var(--aqua)}
+select.inp{background-image:linear-gradient(45deg,transparent 50%,var(--mut) 50%),linear-gradient(135deg,var(--mut) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat}
+.w100{width:100%}
+.q-mini-note{margin-top:12px;font-size:12.5px;color:var(--mut)}
+.q-mini-note b{color:var(--aqua)}
+/* Flight board */
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:36px;flex-wrap:wrap}
+.flt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.flt{background:var(--card);border:1px solid var(--line);padding:18px}
+.flt .day{font-family:"Bebas Neue";font-size:22px;letter-spacing:.06em;color:var(--amber)}
+.flt .rt{font-family:"IBM Plex Mono";font-size:13px;margin:8px 0 12px;letter-spacing:.04em}
+.flt .rt i{color:var(--aqua);font-style:normal}
+.status{display:inline-block;font-family:"IBM Plex Mono";font-size:10px;letter-spacing:.16em;padding:5px 9px;text-transform:uppercase}
+.st-ok{background:rgba(43,196,212,.12);color:var(--aqua);border:1px solid rgba(43,196,212,.4)}
+.st-call{background:rgba(255,179,0,.1);color:var(--amber);border:1px solid rgba(255,179,0,.4)}
+.board-note{margin-top:16px;font-size:12.5px;color:var(--mut)}
+/* Rates (light rhythm section) */
+.rates{background:var(--paper);color:#101418}
+.rates .eyebrow{color:#8a5c00}
+.rate-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+.rate{background:#fff;border:1px solid #e5e0d6;border-top:4px solid var(--amber);padding:26px}
+.rate .lb{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6b7280}
+.rate .big{font-family:"Bebas Neue";font-size:56px;line-height:1;margin:10px 0 6px}
+.rate .big span{font-size:20px;color:#8a5c00}
+.rate p{color:#4b5563;font-size:14px}
+.rate .per{font-family:"IBM Plex Mono";font-size:11px;color:#8a5c00;margin-top:10px;letter-spacing:.1em}
+/* Services */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.svc{background:var(--card);border:1px solid var(--line);padding:24px;transition:.15s}
+.svc:hover{border-color:rgba(43,196,212,.5);transform:translateY(-2px)}
+.svc .ic{width:46px;height:46px;border:1px solid var(--line);display:grid;place-items:center;font-size:22px;background:var(--panel);margin-bottom:16px}
+.svc h3{font-size:22px;letter-spacing:.04em;margin-bottom:8px}
+.svc p{color:var(--mut);font-size:14.5px}
+.svc a{display:inline-block;margin-top:14px;color:var(--aqua);font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+/* Process */
+.proc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.step{background:var(--card);border:1px solid var(--line);padding:22px}
+.step .n{font-family:"Bebas Neue";font-size:44px;color:var(--amber);line-height:1}
+.step h3{font-size:19px;margin:10px 0 6px;letter-spacing:.04em}
+.step p{color:var(--mut);font-size:13.5px}
+/* Why us + manifest */
+.why{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:start}
+.glist{list-style:none;margin-top:26px;display:grid;gap:14px}
+.glist li{display:flex;gap:12px;font-size:15.5px}
+.glist .ck{color:var(--amber);font-weight:800}
+.manifest{background:var(--card);border:1px solid var(--line);padding:26px;font-family:"IBM Plex Mono";font-size:12.5px}
+.manifest .mtitle{color:var(--aqua);letter-spacing:.18em;text-transform:uppercase;font-size:11px;margin-bottom:16px;display:block}
+.mrow{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding:9px 0;color:var(--mut)}
+.mrow b{color:var(--txt);font-weight:500}
+.barcode{height:38px;margin-top:18px;background:repeating-linear-gradient(90deg,#e8eef2 0 2px,transparent 2px 5px,#e8eef2 5px 6px,transparent 6px 11px);opacity:.85}
+/* Routes */
+.chips-lg{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.chip-lg{border:1px solid var(--line);background:var(--card);padding:14px 18px;display:flex;gap:12px;align-items:baseline}
+.chip-lg b{font-family:"Bebas Neue";font-size:20px;letter-spacing:.05em;color:#fff;font-weight:400}
+.chip-lg span{font-family:"IBM Plex Mono";font-size:11px;color:var(--aqua);letter-spacing:.12em}
+/* Testimonials */
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tst{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--aqua);padding:24px}
+.tst p{font-size:15px}
+.tst .who{margin-top:16px;font-family:"IBM Plex Mono";font-size:11px;color:var(--mut);letter-spacing:.1em;text-transform:uppercase}
+.stars{color:var(--amber);letter-spacing:3px;margin-bottom:12px}
+/* FAQ */
+.faq{max-width:820px}
+.faq details{border:1px solid var(--line);background:var(--card);margin-bottom:10px}
+.faq summary{cursor:pointer;padding:16px 18px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--amber);font-size:22px;font-weight:400;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq .a{padding:0 18px 16px;color:var(--mut);font-size:14.5px}
+/* Quote band */
+.quoteband{background:linear-gradient(180deg,#0e1720,#0b1218);border-top:1px solid var(--line)}
+.qb-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px}
+.qb-side .tel{display:block;font-family:"IBM Plex Mono";font-size:24px;color:var(--amber);margin:18px 0 2px}
+.qb-side .wa{color:var(--aqua);font-family:"IBM Plex Mono";font-size:14px;display:block;margin-bottom:6px}
+.hours{font-size:14px;color:var(--mut);margin-top:16px;line-height:1.8}
+.ok{display:none;background:rgba(43,196,212,.1);border:1px solid rgba(43,196,212,.45);color:var(--aqua);padding:14px;margin-top:14px;font-family:"IBM Plex Mono";font-size:13px}
+/* Footer */
+footer{background:#080d12;border-top:1px solid var(--line);padding:60px 0 90px}
+.ft-grid{display:grid;grid-template-columns:1.4fr 1.1fr .8fr .8fr;gap:36px}
+.ft-grid h4{font-size:18px;letter-spacing:.08em;color:#fff;margin-bottom:14px}
+.ft-grid p,.ft-grid a{color:var(--mut);font-size:14px;display:block;margin-bottom:8px}
+.ft-grid a:hover{color:var(--aqua)}
+.nap{font-family:"IBM Plex Mono";font-size:12.5px;color:var(--mut);line-height:1.9}
+.nap b{color:var(--txt);font-weight:500}
+.copy{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;color:#5d6b76;font-size:12.5px;flex-wrap:wrap;font-family:"IBM Plex Mono"}
+/* Mobile action bar */
+.mbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:70;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--line)}
+.mbar a{padding:15px 6px;text-align:center;font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:.08em;background:#0d151c}
+.mbar a.mcall{background:var(--amber);color:#101418}
+.mbar a.mwa{background:var(--aqua);color:#062226}
+/* Responsive */
+@media(max-width:980px){
+.hero .wrap{grid-template-columns:1fr}
+.svc-grid,.rate-grid,.tst-grid{grid-template-columns:1fr 1fr}
+.proc,.flt-grid{grid-template-columns:1fr 1fr}
+.why,.qb-grid{grid-template-columns:1fr}
+.ft-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+.hnav{display:none}
+.hnav.open{display:flex;flex-direction:column;position:absolute;top:74px;left:0;right:0;background:var(--ink);border-bottom:1px solid var(--line);padding:12px 22px 18px}
+.hdr-call{display:none}
+.burger{display:block}
+.svc-grid,.rate-grid,.tst-grid,.proc,.flt-grid,.ft-grid,.f-row{grid-template-columns:1fr}
+.mbar{display:grid}
+.hero-bg{font-size:200px}
+footer{padding-bottom:120px}
+body{padding-bottom:52px}
+}
+</style>
+</head>
+<body>
+<!-- ══ Next.js: components/Header.tsx ══ -->
+<header class="hdr" id="top">
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <span class="logo-badge">AF</span>
+      <span class="logo-t"><b>ABACO FREIGHT</b><span>&amp; ISLAND SUPPLY · FL ⇄ 242</span></span>
+    </a>
+    <nav class="hnav" id="hnav">
+      <a href="#services">Services</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#rates">Rates</a>
+      <a href="#routes">Routes</a>
+      <a href="#faq">FAQ</a>
+      <a href="#reviews">Reviews</a>
+    </nav>
+    <div class="hdr-r">
+      <a class="hdr-call" href="tel:+15615550142"><span>Dispatch [placeholder]</span><b>+1 (561) 555-0142</b></a>
+      <a class="btn" href="#quote">Get a Quote</a>
+      <button class="burger" id="burger" aria-label="Menu">≡</button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ Next.js: components/Hero.tsx + components/QuoteCard.tsx ══ -->
+<section class="hero">
+  <div class="hero-bg">242</div>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">West Palm Beach ⇄ Marsh Harbour — Direct Air Cargo</span>
+      <h1 class="h1">FLY IT TO ABACO.<br><span style="color:var(--aqua)">SKIP THE</span> BOAT WAIT.</h1>
+      <div class="chips">
+        <span class="tag">Direct Air</span>
+        <span class="tag">Customs Docs Handled</span>
+        <span class="tag">POD Every Flight</span>
+      </div>
+      <p class="sub">Abaco Freight &amp; Island Supply flies time-sensitive cargo from our West Palm Beach warehouse to Marsh Harbour — parcels, pallets, parts and full island supply orders, with customs paperwork prepared for you.</p>
+      <div class="cta-row">
+        <a class="btn" href="#quote">Get Today's Rate</a>
+        <a class="btn btn-aq" href="https://wa.me/12425550242">WhatsApp Dispatch</a>
+      </div>
+      <div class="micro">
+        <span><b>✓</b> Licensed FL forwarder</span>
+        <span><b>✓</b> Insured cargo</span>
+        <span><b>✓</b> Same-day drop-off cut-off [2:00 PM placeholder]</span>
+      </div>
+    </div>
+    <form class="qcard" id="qmini" onsubmit="return false">
+      <h3>GET TODAY'S RATE</h3>
+      <span class="qnote">Rate back within 15 min · dispatch hours</span>
+      <div class="f-row">
+        <div><label for="m-name">Name</label><input class="inp" id="m-name" type="text" placeholder="Your name"></div>
+        <div><label for="m-wa">WhatsApp #</label><input class="inp" id="m-wa" type="tel" placeholder="+1 ___ ___ ____"></div>
+      </div>
+      <div class="f-row">
+        <div><label for="m-from">From</label>
+          <select class="inp" id="m-from">
+            <option>West Palm Beach warehouse</option>
+            <option>Miami pickup</option>
+            <option>Fort Lauderdale pickup</option>
+            <option>Orlando pickup</option>
+          </select>
+        </div>
+        <div><label for="m-to">To</label>
+          <select class="inp" id="m-to">
+            <option>Marsh Harbour (MYAM)</option>
+            <option>Treasure Cay (MYAT)</option>
+            <option>Other Abaco cay</option>
+          </select>
+        </div>
+      </div>
+      <div class="f-full"><label for="m-what">What are you shipping?</label><input class="inp" id="m-what" type="text" placeholder="e.g. 2 boxes of boat parts · 40 lb"></div>
+      <a class="btn w100" href="#quote">Get My Rate →</a>
+      <p class="q-mini-note"><b>No spam, no obligation.</b> On the live site this mini-form carries into the full quote.</p>
+    </form>
+  </div>
+</section>
+<!-- ══ Next.js: components/FlightBoard.tsx ══ -->
+<section class="sec" id="schedule">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow aq">Flight Board — This Week</span>
+        <h2 class="h2">NEXT FLIGHTS OUT</h2>
+      </div>
+      <span class="tag">Updated weekly — confirm by WhatsApp [placeholder]</span>
+    </div>
+    <div class="flt-grid">
+      <div class="flt"><div class="day">MONDAY</div><div class="rt">KWPB <i>→</i> MYAM</div><span class="status st-ok">On Schedule</span></div>
+      <div class="flt"><div class="day">THURSDAY</div><div class="rt">KWPB <i>→</i> MYAM</div><span class="status st-ok">On Schedule</span></div>
+      <div class="flt"><div class="day">FRIDAY</div><div class="rt">KWPB <i>→</i> MYAT</div><span class="status st-ok">On Schedule</span></div>
+      <div class="flt"><div class="day">SATURDAY</div><div class="rt">KWPB <i>→</i> MYAM</div><span class="status st-call">By Request</span></div>
+    </div>
+    <p class="board-note">*Sample board for the mockup — replace with the dispatch-confirmed days, destinations and cut-off times. Urgent loads: WhatsApp us, we'll find the next seat.</p>
+  </div>
+</section>
+
+<!-- ══ Next.js: components/Rates.tsx ══ -->
+<div class="hz"></div>
+<section class="sec rates" id="rates">
+  <div class="wrap">
+    <span class="eyebrow">Rates — No Surprises</span>
+    <h2 class="h2">PUBLISHED RATES, PER POUND</h2>
+    <div class="rate-grid">
+      <div class="rate">
+        <span class="lb">Small Parcel</span>
+        <div class="big">$<span>[X.XX]</span>/lb</div>
+        <p>Boxes, envelopes and personal items up to 50 lb. Minimum charge applies.</p>
+        <div class="per">[PLACEHOLDER — CONFIRM]</div>
+      </div>
+      <div class="rate">
+        <span class="lb">Palletized Freight</span>
+        <div class="big">$<span>[X.XX]</span>/lb</div>
+        <p>Crates and pallets. Dimensional weight applies on bulky, light cargo.</p>
+        <div class="per">[PLACEHOLDER — CONFIRM]</div>
+      </div>
+      <div class="rate">
+        <span class="lb">Island Supply Order</span>
+        <div class="big">$<span>[XX]</span> flat</div>
+        <p>We source, buy and fly your supply list — hardware, parts, appliances.</p>
+        <div class="per">+ items at cost [PLACEHOLDER]</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="hz"></div>
+
+<!-- ══ Next.js: components/Services.tsx ══ -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">What We Move</span>
+        <h2 class="h2">SIX WAYS TO GET IT THERE</h2>
+      </div>
+      <a class="btn btn-ghost" href="#quote">Request a Service</a>
+    </div>
+    <div class="svc-grid">
+      <div class="svc">
+        <div class="ic">✈</div>
+        <h3>Air Freight</h3>
+        <p>Parcels and pallets on scheduled flights. The fastest way to the island for anything time-sensitive.</p>
+        <a href="#quote">Get rate →</a>
+      </div>
+      <div class="svc">
+        <div class="ic">🛒</div>
+        <h3>Island Supply</h3>
+        <p>We source and fly building materials, hardware, appliance parts and groceries from Florida stores.</p>
+        <a href="#quote">Order supply run →</a>
+      </div>
+      <div class="svc">
+        <div class="ic">✉</div>
+        <h3>Mail &amp; Parcel Receiving</h3>
+        <p>Your own US address. We receive, consolidate, fly it over and hold it at the Marsh Harbour counter.</p>
+        <a href="#quote">Get a US address →</a>
+      </div>
+      <div class="svc">
+        <div class="ic">❄</div>
+        <h3>Perishables &amp; Cold Box</h3>
+        <p>Insulated cold-chain handling for food, medicine and bait — packed to survive the ramp.</p>
+        <a href="#quote">Ship cold →</a>
+      </div>
+      <div class="svc">
+        <div class="ic">🛠</div>
+        <h3>Marine &amp; AOG Parts</h3>
+        <p>Urgent boat and aircraft parts get priority on the next flight out. Your season can't wait for a boat.</p>
+        <a href="#quote">Move a part now →</a>
+      </div>
+      <div class="svc">
+        <div class="ic">🚐</div>
+        <h3>FL Pickup &amp; Drop-off</h3>
+        <p>Drop at the West Palm Beach warehouse, or book a pickup across South Florida [radius placeholder].</p>
+        <a href="#quote">Book a pickup →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ══ Next.js: components/Process.tsx ══ -->
+<section class="sec" id="process" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow aq">How It Works</span>
+        <h2 class="h2">FOUR STEPS, NO GUESSWORK</h2>
+      </div>
+    </div>
+    <div class="proc">
+      <div class="step"><div class="n">01</div><h3>Request</h3><p>Call, WhatsApp or the quote form. Rate comes back fast — usually within 15 minutes during dispatch hours.</p></div>
+      <div class="step"><div class="n">02</div><h3>Drop-off</h3><p>Bring cargo to the West Palm Beach warehouse — or book a pickup anywhere in South Florida.</p></div>
+      <div class="step"><div class="n">03</div><h3>We Fly &amp; Clear</h3><p>Customs paperwork is prepared by us. Your cargo boards the next scheduled flight south.</p></div>
+      <div class="step"><div class="n">04</div><h3>Pickup in Abaco</h3><p>Collect at our Marsh Harbour counter with a signed POD — or ask about local island delivery.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ Next.js: components/WhyUs.tsx ══ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap why">
+    <div>
+      <span class="eyebrow">Why Shippers Pick Us</span>
+      <h2 class="h2">BUILT FOR<br>ISLAND DEADLINES.</h2>
+      <ul class="glist">
+        <li><span class="ck">✓</span><span><b>Air beats boat</b> — days faster than sea freight consolidators.</span></li>
+        <li><span class="ck">✓</span><span><b>One dispatcher owns your load</b> from booking to signed POD.</span></li>
+        <li><span class="ck">✓</span><span><b>Customs paperwork prepared for you</b> — no forms, no lines.</span></li>
+        <li><span class="ck">✓</span><span><b>Quoted before you commit</b> — the rate we say is the rate you pay.</span></li>
+        <li><span class="ck">✓</span><span><b>Island-side counter</b> in Marsh Harbour with real pickup hours.</span></li>
+      </ul>
+    </div>
+    <div class="manifest">
+      <span class="mtitle">Air Waybill — Preview</span>
+      <div class="mrow"><span>SHIPPER</span><b>[Your name] · WPB, FL</b></div>
+      <div class="mrow"><span>CONSIGNEE</span><b>[You] · Marsh Harbour</b></div>
+      <div class="mrow"><span>PIECES / WEIGHT</span><b>2 · 46 LB</b></div>
+      <div class="mrow"><span>FLIGHT</span><b>KWPB → MYAM</b></div>
+      <div class="mrow"><span>STATUS</span><b style="color:var(--aqua)">MANIFESTED ✓</b></div>
+      <div class="barcode"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ Next.js: components/Routes.tsx ══ -->
+<section class="sec" id="routes" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Coverage</span>
+        <h2 class="h2">WHERE WE FLY &amp; COLLECT</h2>
+      </div>
+      <p class="sub" style="font-size:15px">Scheduled service between South Florida and the Abacos. Other cays by arrangement with our boat partners.</p>
+    </div>
+    <div class="chips-lg">
+      <div class="chip-lg"><b>Marsh Harbour</b><span>MYAM · SCHEDULED</span></div>
+      <div class="chip-lg"><b>Treasure Cay</b><span>MYAT · SCHEDULED</span></div>
+      <div class="chip-lg"><b>Other Abaco Cays</b><span>BY ARRANGEMENT</span></div>
+      <div class="chip-lg"><b>WPB Warehouse</b><span>DROP-OFF · MON–SAT</span></div>
+      <div class="chip-lg"><b>Miami / FTL / Orlando</b><span>PICKUP ON REQUEST</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ Next.js: components/Testimonials.tsx ══ -->
+<section class="sec" id="reviews" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow aq">From the Docks</span>
+        <h2 class="h2">WHAT SHIPPERS SAY</h2>
+      </div>
+      <span class="tag">[Placeholder quotes — collect real ones via the FB page]</span>
+    </div>
+    <div class="tst-grid">
+      <div class="tst"><div class="stars">★★★★★</div><p>"Called at noon, parts were in Marsh Harbour the next day. Saved our charter week."</p><div class="who">[Customer name] — Marsh Harbour</div></div>
+      <div class="tst"><div class="stars">★★★★★</div><p>"They handle the customs side so I don't think about it. My supply list just shows up."</p><div class="who">[Customer name] — Treasure Cay</div></div>
+      <div class="tst"><div class="stars">★★★★★</div><p>"Finally a US address that works. Mail and parcels consolidated and flown every week."</p><div class="who">[Customer name] — Hope Town</div></div>
+    </div>
+  </div>
+</section>
+<!-- ══ Next.js: components/Faq.tsx (native <details>, no JS) ══ -->
+<section class="sec" id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Good to Know</span>
+        <h2 class="h2">QUESTIONS SHIPPERS ASK</h2>
+      </div>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>What can't you fly?</summary>
+        <div class="a">Hazardous materials, propane, fuels and anything BAT/FAA restricted. When in doubt, WhatsApp us a photo of the item — we'll confirm before you drive over.</div>
+      </details>
+      <details>
+        <summary>How do customs and duty work?</summary>
+        <div class="a">We prepare the customs paperwork for every load. Bahamian duty (if any) is assessed on arrival and settled at pickup at the Marsh Harbour counter. [Process detail placeholder — confirm with owner.]</div>
+      </details>
+      <details>
+        <summary>What are the weight and size limits?</summary>
+        <div class="a">Per-piece limits depend on the aircraft and load balance; pallets are rated by dimensional weight. Tell us the weight and dims in the quote form and we'll confirm what fits. [Limits placeholder.]</div>
+      </details>
+      <details>
+        <summary>Can you take food or medicine?</summary>
+        <div class="a">Yes — that's the cold-box service. Insulated packing keeps it stable from the ramp to the Marsh Harbour counter. [Cold-chain detail placeholder.]</div>
+      </details>
+      <details>
+        <summary>Where exactly do I drop off and pick up?</summary>
+        <div class="a">Florida side: 2532 Old Okeechobee Rd, West Palm Beach, FL 33409 (from the company's Sunbiz filing — verify before print). Abaco side: Marsh Harbour counter — address [placeholder].</div>
+      </details>
+      <details>
+        <summary>How do I pay?</summary>
+        <div class="a">[Placeholder — confirm accepted methods: card, Zelle/Venmo, cash on pickup, account terms for repeat shippers.]</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══ Next.js: components/QuoteBand.tsx (form posts to app/api/quote/route.ts when built) ══ -->
+<div class="hz"></div>
+<section class="sec quoteband" id="quote">
+  <div class="wrap qb-grid">
+    <div class="qb-side">
+      <span class="eyebrow">Start Your Load</span>
+      <h2 class="h2">GET YOUR CARGO<br>ON THE NEXT FLIGHT.</h2>
+      <p class="sub" style="margin-top:16px;font-size:16px">Tell us what it is, where it's going, and when you need it. A dispatcher replies — no ticket queue.</p>
+      <a class="tel" href="tel:+15615550142">+1 (561) 555-0142</a>
+      <span class="mono" style="font-size:11px;color:var(--mut);letter-spacing:.18em">[PLACEHOLDER NUMBER]</span>
+      <a class="wa" href="https://wa.me/12425550242">WhatsApp: +1 (242) 555-0242 [placeholder]</a>
+      <p class="hours"><b style="color:var(--txt)">Dispatch hours [placeholder]</b><br>Mon–Fri · 8:00 AM – 5:00 PM<br>Sat · 8:00 AM – 12:00 PM<br>Sun · Closed (WhatsApp monitored)</p>
+    </div>
+    <form id="qform" onsubmit="return false">
+      <div class="f-row">
+        <div><label for="q-name">Name *</label><input class="inp" id="q-name" required type="text" placeholder="Your name"></div>
+        <div><label for="q-wa">WhatsApp *</label><input class="inp" id="q-wa" required type="tel" placeholder="+1 ___ ___ ____"></div>
+      </div>
+      <div class="f-row">
+        <div><label for="q-email">Email</label><input class="inp" id="q-email" type="email" placeholder="you@email.com"></div>
+        <div><label for="q-need">Needed by</label><input class="inp" id="q-need" type="date"></div>
+      </div>
+      <div class="f-row">
+        <div><label for="q-from">From (FL)</label>
+          <select class="inp" id="q-from">
+            <option>West Palm Beach warehouse</option>
+            <option>Miami pickup</option>
+            <option>Fort Lauderdale pickup</option>
+            <option>Orlando pickup</option>
+          </select>
+        </div>
+        <div><label for="q-to">To (Abaco)</label>
+          <select class="inp" id="q-to">
+            <option>Marsh Harbour (MYAM)</option>
+            <option>Treasure Cay (MYAT)</option>
+            <option>Other Abaco cay</option>
+          </select>
+        </div>
+      </div>
+      <div class="f-full"><label for="q-desc">What are you shipping? *</label><textarea class="inp" id="q-desc" rows="3" required placeholder="Items, boxes/pallets, weight and dims if you know them"></textarea></div>
+      <button class="btn w100" type="submit" onclick="var o=document.getElementById('qok');o.style.display='block';return false;">Submit — Reserve Flight Space</button>
+      <p class="q-mini-note">Rate back within 15 minutes during dispatch hours · <b>no obligation</b></p>
+      <div class="ok" id="qok">✓ MOCKUP ONLY — nothing was sent. On the live site this posts to /api/quote and pings dispatch by email/SMS.</div>
+    </form>
+  </div>
+</section>
+<!-- ══ Next.js: components/Footer.tsx — NAP block is critical for local SEO (Google Business Profile) ══ -->
+<footer>
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <div class="logo" style="margin-bottom:16px">
+          <span class="logo-badge">AF</span>
+          <span class="logo-t"><b>ABACO FREIGHT</b><span>&amp; ISLAND SUPPLY · FL ⇄ 242</span></span>
+        </div>
+        <p>Time-sensitive air cargo and island supply between West Palm Beach, FL and the Abacos, Bahamas. Air beats boat.</p>
+        <a href="https://web.facebook.com/abacofreight" style="color:var(--aqua)">facebook.com/abacofreight ↗</a>
+      </div>
+      <div>
+        <h4>CONTACT / NAP</h4>
+        <div class="nap">
+          <b>FL WAREHOUSE</b><br>2532 Old Okeechobee Rd<br>West Palm Beach, FL 33409<br>(verified — Sunbiz)<br><br>
+          <b>ABACO COUNTER</b><br>Marsh Harbour [address TBD]<br><br>
+          <b>DISPATCH</b> +1 (561) 555-0142 [ph]<br>
+          <b>WHATSAPP</b> +1 (242) 555-0242 [ph]<br>
+          <b>EMAIL</b> dispatch@abacofreight.com [ph]
+        </div>
+      </div>
+      <div>
+        <h4>SERVICES</h4>
+        <a href="#services">Air Freight</a>
+        <a href="#services">Island Supply</a>
+        <a href="#services">Mail Receiving</a>
+        <a href="#services">Cold Box</a>
+        <a href="#services">Marine/AOG Parts</a>
+        <a href="#services">FL Pickup</a>
+      </div>
+      <div>
+        <h4>QUICK LINKS</h4>
+        <a href="#schedule">Flight Board</a>
+        <a href="#rates">Rates</a>
+        <a href="#process">How It Works</a>
+        <a href="#faq">FAQ</a>
+        <a href="#quote">Get a Quote</a>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© <span id="y">2026</span> ABACO FREIGHT LLC &amp; ISLAND SUPPLY — design mockup</span>
+      <span>PLACEHOLDERS MARKED [ ]/[ph] — SEE DESIGN-SPEC.md §5</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ Next.js: components/MobileActionBar.tsx — 3 revenue paths, one tap, always visible on mobile ══ -->
+<nav class="mbar" aria-label="Quick contact">
+  <a class="mcall" href="tel:+15615550142">Call</a>
+  <a class="mwa" href="https://wa.me/12425550242">WhatsApp</a>
+  <a href="#quote" style="color:var(--amber)">Quote</a>
+</nav>
+
+<script>
+/* Demo-only handlers (mockup scope — no real logic per "pure design" brief).
+   Production: nav toggle → CSS/React state; forms → POST app/api/quote/route.ts */
+document.getElementById('y').textContent = new Date().getFullYear();
+var burger = document.getElementById('burger');
+if (burger) {
+  burger.addEventListener('click', function () {
+    document.getElementById('hnav').classList.toggle('open');
+  });
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
